@@ -169,6 +169,7 @@ function DetailPanel({ applicant: a, onClose }: { applicant: Applicant; onClose:
         <div>
           <h2 className="text-xl font-extrabold text-gray-900">{a.name}</h2>
           <p className="text-sm text-gray-500">{a.jobType}</p>
+          <p className="mt-1 text-xs text-gray-500">🧾 Source: uploaded bank statement · ✓ checked for edits</p>
           <div className="mt-2 flex flex-wrap items-center gap-2">
             <span className={`text-2xl font-extrabold ${scoreColor(a.score)}`}>{a.score}</span>
             <span className="text-xs text-gray-400">/ 1000</span>

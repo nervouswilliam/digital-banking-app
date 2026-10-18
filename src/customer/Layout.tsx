@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { BANK_NAME } from '../data/mockData';
 
-export const STEP_LABELS = ['Permission', 'Connect', 'Checking', 'Your money', 'Result'];
+export const STEP_LABELS = ['Permission', 'Share info', 'Checking', 'Your money', 'Result'];
 
 export function PhoneFrame({ children }: { children: ReactNode }) {
   return (

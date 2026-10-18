@@ -206,14 +206,13 @@ export function SitiCompareScreen({
 }
 
 export function AcceptedScreen({ persona, loan, onNext }: { persona: Persona; loan: LoanQuote; onNext: () => void }) {
-  const account = persona.connectCards.find((c) => c.id === 'bank')!.doneText.replace('Connected: ', '');
   return (
     <Screen footer={<Button className="w-full py-4 text-lg" onClick={onNext}>Manage my data</Button>}>
       <div className="flex flex-col items-center pt-4 text-center">
         <span className="mb-4 flex h-20 w-20 animate-pop items-center justify-center rounded-full bg-emerald-500 text-4xl text-white">✓</span>
         <H1>Loan accepted!</H1>
         <p className="mt-2 text-base text-gray-600">
-          {BANK_NAME} will send <b className="text-gray-900">{sgd(loan.amount)}</b> to your {account.toLowerCase()} within 1 working day.
+          {BANK_NAME} will send <b className="text-gray-900">{sgd(loan.amount)}</b> to your {persona.payoutAccount} within 1 working day.
         </p>
       </div>
       <LoanSummary loan={loan} />
@@ -245,6 +244,7 @@ export function NotNowScreen({ persona, onNext }: { persona: Persona; onNext: ()
 
 const SHARE_LABEL: Record<string, string> = {
   singpass: 'Singpass (name and ID)',
+  statement: 'Bank statement (uploaded)',
   earnings: 'Earnings statement',
   platform: 'Sales platforms',
   invoices: 'Supplier invoices',
@@ -282,7 +282,7 @@ export function MyDataScreen({ persona, onFinish }: { persona: Persona; onFinish
       <Card className="flex gap-3 bg-brand-50">
         <span className="text-2xl">🔒</span>
         <p className="text-[15px] text-gray-800">
-          Access ends on <b>{endDate}</b>.
+          Access ends and uploaded files are deleted on <b>{endDate}</b>.
         </p>
       </Card>
     </Screen>

@@ -48,7 +48,7 @@ export function GlanceScreen({ persona, onNext }: { persona: Persona; onNext: ()
   return (
     <Screen footer={<Button className="w-full py-4 text-lg" onClick={onNext}>See my result</Button>}>
       <H1>Your money at a glance</H1>
-      <Lead>Your monthly average, worked out from your bank account and earnings.</Lead>
+      <Lead>Your monthly average, worked out from your bank statement and earnings.</Lead>
 
       <div className="grid grid-cols-3 gap-2">
         <Tile label="Money in" value={sgd(cf.moneyIn)} tone="blue" />

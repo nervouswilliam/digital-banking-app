@@ -52,12 +52,12 @@ The result screen says so in small print.
 1. "Ali drives for a ride-hail app. He earns about S$3,000 a month, but he has no payslip, so banks say no."
 2. **Start.** Point at the *Who is who* card: "The loan comes from Merlion Digital Bank. FlowScore only helps the bank understand his income."
 3. **Your permission:** "He sees exactly what's shared and what isn't, and access ends after 30 days." Tick **I agree**, then **Continue**.
-4. **Connect your info:** tap all three. "Singpass for ID, his bank account, and his earnings statement." Then **Continue**.
+4. **Share your info:** tap all three. "Singpass for ID, then he uploads his bank statement – a PDF or just photos of the printed pages – and his earnings statement. No bank log-in needed. FlowScore reads the statement and checks it hasn't been edited." Then **Continue**.
 5. **Your money at a glance:** "S$3,000 in, S$2,200 out, so S$800 is left. The new S$260 payment uses 33% of that, which is comfortable." Then **See my result**.
 6. **Result:** "In plain words: you get S$3,000, you pay S$260 a month, and the cost of borrowing is S$115." Tap **Accept loan**.
 
 ### 2. Siti's Kitchen, the micro-business (~40 s)
-1. Presenter → **Siti's Kitchen**. Run Start → I agree → connect all 4 → Continue.
+1. Presenter → **Siti's Kitchen**. Run Start → I agree → complete all 4 (Singpass, business bank statements, sales platform, supplier invoices) → Continue.
 2. **Business cash flow:** "S$20,000 in sales, S$18,000 in running costs, so S$2,000 is left from operations."
 3. **How much do you need?:** "Her cash is tied up for 17 days, at S$600 a day, so she needs S$10,200 to keep running. She has S$6,200, which leaves a S$4,000 gap. Add the S$12,000 oven and she needs S$16,000, not the S$20,000 she asked for."
 4. **Can you afford it?:** "Her safety score is 1.78, in the green zone."

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-const sources = ['Bank accounts / SGFinDex', 'Singpass', 'Earnings statements', 'E-wallets'];
+const sources = ['Bank statements (PDF / photo)', 'Singpass', 'Earnings statements', 'E-wallet records'];
 
 function Box({ x, y, w, h, fill, stroke, children }: { x: number; y: number; w: number; h: number; fill: string; stroke: string; children: ReactNode }) {
   return (
@@ -69,7 +69,7 @@ export default function HowItWorks() {
           </text>
           <rect x={430} y={flowY - 95} width={340} height={190} rx={20} fill="#E8F3FB" stroke="#0070C0" strokeWidth={2} strokeDasharray="6 4" />
           {[
-            { t: 'Clean data', s: 'remove transfers', e: '🧹' },
+            { t: 'Read & check', s: 'statements, edits', e: '🧾' },
             { t: 'Cash-flow signals', s: 'income, bills, savings', e: '📈' },
             { t: 'Score + reasons', s: 'in plain English', e: '📝' },
           ].map((step, i) => {
@@ -137,7 +137,7 @@ export default function HowItWorks() {
           {
             icon: '🌏',
             title: 'For Singapore',
-            points: ['Supports gig workers and micro-businesses', 'Builds on trusted data (Singpass, SGFinDex)', 'Responsible lending – borrow only what you need'],
+            points: ['Supports gig workers and micro-businesses', 'Works with documents people already have', 'Responsible lending – borrow only what you need'],
           },
         ].map((c) => (
           <div key={c.title} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">

@@ -16,6 +16,10 @@ export interface ConnectCard {
   buttonLabel: string;
   doneText: string;
   icon: string;
+  /** How the card behaves when tapped: a log-in, a live connection, or a file upload. */
+  kind: 'login' | 'connect' | 'upload';
+  /** Extra checks shown after an upload, e.g. that a statement hasn't been edited. */
+  checks?: string[];
 }
 
 export interface LoanQuote {
@@ -49,6 +53,8 @@ export interface Persona {
   requested: number;
   outcome: 'approved' | 'notyet';
   connectCards: ConnectCard[];
+  /** Where the loan money would be paid (the account on the uploaded statement). */
+  payoutAccount: string;
   earningsFileNote: string;
   reasons: { icon: string; text: string }[];
   tips?: string[];
@@ -65,6 +71,7 @@ const singpassCard = (name: string): ConnectCard => ({
   buttonLabel: 'Log in with Singpass (simulated)',
   doneText: `Confirmed: ${name} · S****567A`,
   icon: '🪪',
+  kind: 'login',
 });
 
 export const personas: Record<PersonaId, Persona> = {
@@ -83,12 +90,14 @@ export const personas: Record<PersonaId, Persona> = {
     connectCards: [
       singpassCard('Ali Rahman'),
       {
-        id: 'bank',
-        title: 'Connect your bank account',
-        description: 'See money coming in and going out.',
-        buttonLabel: 'Connect bank account',
-        doneText: 'Connected: Bank account ending 1234',
-        icon: '🏦',
+        id: 'statement',
+        title: 'Upload your bank statement',
+        description: 'Last 12 months. A PDF, or photos of the printed pages.',
+        buttonLabel: 'Upload PDF or photos',
+        doneText: 'bank_statement.pdf ✓ – 12 months of transactions read',
+        icon: '🧾',
+        kind: 'upload',
+        checks: ['Name matches your Singpass details', 'Account ending 1234 · Nov 2025 – Oct 2026', 'No signs of editing'],
       },
       {
         id: 'earnings',
@@ -97,8 +106,10 @@ export const personas: Record<PersonaId, Persona> = {
         buttonLabel: 'Upload file',
         doneText: 'earnings_statement.pdf ✓ – 12 months of income found',
         icon: '📄',
+        kind: 'upload',
       },
     ],
+    payoutAccount: 'bank account ending 1234',
     earningsFileNote: '12 months of income found',
     reasons: [
       { icon: '📈', text: 'Steady income for 18+ months' },
@@ -139,12 +150,14 @@ export const personas: Record<PersonaId, Persona> = {
     connectCards: [
       singpassCard('Mei Ling Tan'),
       {
-        id: 'bank',
-        title: 'Connect your bank account',
-        description: 'See money coming in and going out.',
-        buttonLabel: 'Connect bank account',
-        doneText: 'Connected: Bank account ending 5678',
-        icon: '🏦',
+        id: 'statement',
+        title: 'Upload your bank statement',
+        description: 'Last 12 months. A PDF, or photos of the printed pages.',
+        buttonLabel: 'Upload PDF or photos',
+        doneText: '8 photos ✓ – 8 months of transactions read',
+        icon: '🧾',
+        kind: 'upload',
+        checks: ['Name matches your Singpass details', 'Account ending 5678 · Mar 2026 – Oct 2026', 'No signs of editing'],
       },
       {
         id: 'earnings',
@@ -153,8 +166,10 @@ export const personas: Record<PersonaId, Persona> = {
         buttonLabel: 'Upload file',
         doneText: 'earnings_statement.pdf ✓ – 8 months of sales found',
         icon: '📄',
+        kind: 'upload',
       },
     ],
+    payoutAccount: 'bank account ending 5678',
     earningsFileNote: '8 months of sales found',
     reasons: [
       { icon: '📅', text: 'Less than 12 months of sales history' },
@@ -192,12 +207,14 @@ export const personas: Record<PersonaId, Persona> = {
     connectCards: [
       singpassCard('Siti Aminah'),
       {
-        id: 'bank',
-        title: 'Connect business bank account',
-        description: 'See sales coming in and costs going out.',
-        buttonLabel: 'Connect business account',
-        doneText: 'Connected: Business account ending 8890',
-        icon: '🏦',
+        id: 'statement',
+        title: 'Upload business bank statements',
+        description: 'Last 12 months. A PDF, or photos of the printed pages.',
+        buttonLabel: 'Upload PDF or photos',
+        doneText: 'business_statements.pdf ✓ – 12 months of transactions read',
+        icon: '🧾',
+        kind: 'upload',
+        checks: ["Business name matches Siti's Kitchen", 'Account ending 8890 · Nov 2025 – Oct 2026', 'No signs of editing'],
       },
       {
         id: 'platform',
@@ -206,6 +223,7 @@ export const personas: Record<PersonaId, Persona> = {
         buttonLabel: 'Connect sales platform',
         doneText: 'Connected: 2 delivery platforms – 24 months of sales',
         icon: '🛵',
+        kind: 'connect',
       },
       {
         id: 'invoices',
@@ -213,9 +231,11 @@ export const personas: Record<PersonaId, Persona> = {
         description: 'Ingredients, packaging and the oven quote.',
         buttonLabel: 'Upload invoices',
         doneText: 'supplier_invoices.zip ✓ – 36 invoices + oven quote',
-        icon: '🧾',
+        icon: '📦',
+        kind: 'upload',
       },
     ],
+    payoutAccount: 'business account ending 8890',
     earningsFileNote: '24 months of sales found',
     reasons: [
       { icon: '📈', text: 'Steady sales for 2 years' },
